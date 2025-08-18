@@ -16,7 +16,7 @@ class EBook(Book):
         self.file_size = file_size
 
     def __str__(self):
-        return f"EBook: {self.title} by {self.author}, {self.file_size}MB"
+        return f"EBook: {self.title} by {self.author}, File Size: {self.file_size}KB"
 
 # Derived class for printed books
 class PrintBook(Book):
@@ -25,7 +25,7 @@ class PrintBook(Book):
         self.page_count = page_count
 
     def __str__(self):
-        return f"PrintBook: {self.title} by {self.author}, {self.page_count} pages"
+        return f"PrintBook: {self.title} by {self.author}, Page Count: {self.page_count}"
 
 # Library class using composition
 class Library:
@@ -39,3 +39,17 @@ class Library:
         for book in self.books:
             print(book)
 
+# Test code to demonstrate correct output
+if __name__ == "__main__":
+    library = Library()
+
+    # Use exact test data from expected output
+    book1 = Book("Pride and Prejudice", "Jane Austen")
+    ebook1 = EBook("Snow Crash", "Neal Stephenson", 500)
+    printbook1 = PrintBook("The Catcher in the Rye", "J.D. Salinger", 234)
+
+    library.add_book(book1)
+    library.add_book(ebook1)
+    library.add_book(printbook1)
+
+    library.list_books()
